@@ -34,6 +34,9 @@ npx playwright test --headed
 # Run a single spec
 npx playwright test tests/example.spec.ts
 
+# Run a single module
+npx playwright test tests/01_Basics
+
 # Run in UI mode (interactive)
 npx playwright test --ui
 
@@ -53,19 +56,48 @@ npx playwright show-report
 
 ```
 .
-├── tests/                  # Test specs
-│   └── example.spec.ts     # Sample: title check + "Get started" navigation
-├── playwright.config.ts    # Playwright configuration
+├── tests/                          # Test specs organized by topic
+│   ├── example.spec.ts             # Minimal example test
+│   ├── Template.spec.ts            # Reusable spec template
+│   ├── 01_Basics/                  # Basics: first tests, annotations, BCP
+│   ├── 02_first_tests/             # First test cases
+│   ├── 03_Locators_Commands/       # Locators & commands
+│   ├── 03_locators/                # Locator strategies
+│   ├── 04_Session_Storage/         # Session storage handling
+│   ├── 05_Allure_Reporting/        # Allure reporting
+│   ├── 06_Multiple_Element_/       # Working with multiple elements
+│   ├── 07_WebTables/               # Web tables
+│   ├── 08_Web_Select_Frames_Iframe/ # Selects, frames & iframes
+│   ├── 09_Frame_Iframe/            # Frames & iframes
+│   ├── 10_Keyboard_Hover_Drag_Drop/# Keyboard, hover, drag & drop
+│   ├── 11_JS_Alerts/               # JavaScript dialogs/alerts
+│   ├── 12_Handle_SVG/              # Handling SVG elements
+│   ├── 13_Shadow_DOM/              # Shadow DOM
+│   ├── 14_FileUpload/              # File upload
+│   ├── 15_File_Download/           # File download
+│   ├── 16_Scroll_toElement/        # Scrolling to elements
+│   ├── 17_Expect_Assertions/       # Expect assertions
+│   ├── 18_Test_hooks/              # Test hooks (before/after)
+│   ├── 19_Data_Driven_Testing/     # Data-driven testing
+│   ├── 20_Page_Object_Model/       # Page Object Model
+│   ├── 21_Fixture/                 # Custom fixtures
+│   ├── 22_Misc_Concepts/           # Miscellaneous concepts
+│   ├── 23_Advance_Framework/       # Advanced framework patterns
+│   └── Projects/                   # Project-level configs / setup
+├── playwright.config.ts            # Playwright configuration
 ├── package.json
 └── .gitignore
 ```
 
 ## What's Inside
 
-`tests/example.spec.ts` demonstrates two core patterns:
+The project is organized into numbered learning modules (01–23) covering Playwright fundamentals, from basic navigation and locators through to advanced topics like Page Object Model, fixtures, and data-driven testing.
 
-1. **Assertions** — verify the page title matches `/Playwright/`.
-2. **Navigation + role locators** — click the *Get started* link and assert the *Installation* heading is visible.
+- `tests/example.spec.ts` — a minimal example verifying the page title.
+- `tests/Template.spec.ts` — a reusable starting template for new specs.
+- `tests/01_Basics/` — includes basic tests, test annotations, and best-practice conventions (BCP).
+
+> Note: Several module folders are scaffolded as placeholders for upcoming exercises.
 
 ## Configuration Highlights
 
@@ -74,7 +106,8 @@ Defined in `playwright.config.ts`:
 - `testDir: './tests'` — where specs live
 - `fullyParallel: true` — run test files in parallel
 - `reporter: 'html'` — generate an HTML report
-- Projects for Chromium, Firefox, and WebKit
+- `trace: 'on-first-retry'` — capture traces on retry
+- A `chromium` project (Firefox/WebKit and mobile/branded browsers are available but commented out)
 - CI-aware retries and workers (`process.env.CI`)
 
 ## Learn More
