@@ -109,6 +109,7 @@ Defined in `playwright.config.ts`:
 - `trace: 'on-first-retry'` — capture traces on retry
 - A `chromium` project (Firefox/WebKit and mobile/branded browsers are available but commented out)
 - CI-aware retries and workers (`process.env.CI`)
+- `forbidOnly` is currently **disabled/commented out**, allowing `test.only` focused runs locally. Re-enable `forbidOnly: !!process.env.CI` in CI to fail the build if a `test.only` is accidentally left in the source.
 
 ## Learn More
 
