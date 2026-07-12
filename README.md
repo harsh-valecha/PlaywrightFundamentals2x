@@ -62,7 +62,7 @@ npx playwright show-report
 │   ├── 01_Basics/                  # Basics: first tests, annotations, BCP
 │   ├── 02_first_tests/             # First test cases
 │   ├── 03_Locators_Commands/       # Locators & commands
-│   ├── 03_locators/                # Locator strategies
+│   ├── 03_locators/                # Locator strategies (CSS, project locators, XPath, real-world apps: VWO, CURA Healthcare)
 │   ├── 04_Session_Storage/         # Session storage handling
 │   ├── 05_Allure_Reporting/        # Allure reporting
 │   ├── 06_Multiple_Element_/       # Working with multiple elements
@@ -96,6 +96,11 @@ The project is organized into numbered learning modules (01–23) covering Playw
 - `tests/example.spec.ts` — a minimal example verifying the page title.
 - `tests/Template.spec.ts` — a reusable starting template for new specs.
 - `tests/01_Basics/` — includes basic tests, test annotations, and best-practice conventions (BCP).
+- `tests/03_locators/` — locator strategy exercises:
+  - `01_LS.spec.ts` — locator strategy basics.
+  - `02_Project_Locator.spec.ts` — VWO login error-message validation using CSS `#id` locators.
+  - `03_xpath.spec.ts` — XPath locator template (VWO login page).
+  - `04_Cura_healthcare.spec.ts` — end-to-end flows on the CURA Healthcare demo (make appointment, login, book appointment) using CSS, role, text, and XPath locators.
 
 > Note: Several module folders are scaffolded as placeholders for upcoming exercises.
 
@@ -105,7 +110,7 @@ Defined in `playwright.config.ts`:
 
 - `testDir: './tests'` — where specs live
 - `fullyParallel: true` — run test files in parallel
-- `reporter: 'html'` — generate an HTML report
+- `reporter: 'html'` — HTML reporter is currently **commented out** (no default reporter); uncomment or set a reporter as needed.
 - `trace: 'on-first-retry'` — capture traces on retry
 - A `chromium` project (Firefox/WebKit and mobile/branded browsers are available but commented out)
 - CI-aware retries and workers (`process.env.CI`)
