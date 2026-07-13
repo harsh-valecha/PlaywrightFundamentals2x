@@ -61,7 +61,7 @@ npx playwright show-report
 │   ├── Template.spec.ts            # Reusable spec template
 │   ├── 01_Basics/                  # Basics: first tests, annotations, BCP
 │   ├── 02_first_tests/             # First test cases
-│   ├── 03_Locators_Commands/       # Locators & commands
+│   ├── 03_Locators_Commands/       # Locators & commands (VWO free trial, Playwright commands, sequential input)
 │   ├── 03_locators/                # Locator strategies (CSS, project locators, XPath, real-world apps: VWO, CURA Healthcare)
 │   ├── 04_Session_Storage/         # Session storage handling
 │   ├── 05_Allure_Reporting/        # Allure reporting
@@ -101,6 +101,10 @@ The project is organized into numbered learning modules (01–23) covering Playw
   - `02_Project_Locator.spec.ts` — VWO login error-message validation using CSS `#id` locators.
   - `03_xpath.spec.ts` — XPath locator template (VWO login page).
   - `04_Cura_healthcare.spec.ts` — end-to-end flows on the CURA Healthcare demo (make appointment, login, book appointment) using CSS, role, text, and XPath locators.
+- `tests/03_Locators_Commands/` — locator & command practice:
+  - `01_project_vwo_freetrial.spec.ts` — validates the VWO free-trial email error message via role and XPath locators.
+  - `02_PwCommands.spec.ts` — explores `page.goto` `waitUntil` options (commit, domcontentloaded, load, networkidle).
+  - `03_press_sequential.spec.ts` — demonstrates `pressSequentially` for character-by-character input on the AwesomeQA practice page.
 
 > Note: Several module folders are scaffolded as placeholders for upcoming exercises.
 
@@ -111,6 +115,7 @@ Defined in `playwright.config.ts`:
 - `testDir: './tests'` — where specs live
 - `fullyParallel: true` — run test files in parallel
 - `reporter: 'html'` — HTML reporter is currently **commented out** (no default reporter); uncomment or set a reporter as needed.
+- `headless: false` — tests run in headed mode (browser UI visible); set `headless: true` or pass `--headed`/`--headless` to override.
 - `trace: 'on-first-retry'` — capture traces on retry
 - A `chromium` project (Firefox/WebKit and mobile/branded browsers are available but commented out)
 - CI-aware retries and workers (`process.env.CI`)
