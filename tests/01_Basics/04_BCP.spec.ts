@@ -16,6 +16,4 @@ async function run() {
     console.log('title: ', await page.title());
 }
 
-if (require.main === module) {
-    run();
-}
+run();
