@@ -1,6 +1,6 @@
 import { chromium } from "playwright";
 async function saveSession() {
-    let browser = await chromium.launch({ headless: false });
+    let browser = await chromium.launch({ headless: !!process.env.CI });
     let context = await browser.newContext();
     let page = await context.newPage();
     await page.goto("https://app.wingify.com/#login");
