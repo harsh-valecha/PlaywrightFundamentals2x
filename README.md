@@ -103,8 +103,8 @@ npx playwright show-report
 │   ├── 03_locators/                # Locator strategies (CSS, project locators, XPath, real-world apps: VWO, CURA Healthcare)
 │   ├── 04_Session_Storage/         # Session storage handling (VWO dashboard, sessionStorage)
 │   ├── 05_Allure_Reporting/        # Allure reporting (session storage spec for Allure demo)
-│   ├── 06_Multiple_Element_/       # Working with multiple elements
-│   ├── 07_WebTables/               # Web tables
+│   ├── 06_Multiple_Element_/       # Working with multiple elements (locator.all, filtering)
+│   ├── 07_WebTables/               # Web tables (static, dynamic rows, filtering, pagination)
 │   ├── 08_Web_Select_Frames_Iframe/ # Selects, frames & iframes
 │   ├── 09_Frame_Iframe/            # Frames & iframes
 │   ├── 10_Keyboard_Hover_Drag_Drop/# Keyboard, hover, drag & drop
@@ -136,7 +136,7 @@ npx playwright show-report
 The project is organized into numbered learning modules (01–23) covering Playwright fundamentals, from basic navigation and locators through to advanced topics like Page Object Model, fixtures, and data-driven testing.
 
 - `tests/example.spec.ts` — a minimal example verifying the page title.
-- `tests/Template.spec.ts` — a reusable starting template for new specs.
+- `tests/Template.spec.ts` — a minimal starting template for new specs (currently a bare-bones placeholder; the report-friendly conventions below can be layered in as needed).
 - `tests/01_Basics/` — includes basic tests, test annotations, and best-practice conventions (BCP).
 - `tests/03_locators/` — locator strategy exercises:
   - `01_LS.spec.ts` — locator strategy basics.
@@ -149,6 +149,18 @@ The project is organized into numbered learning modules (01–23) covering Playw
   - `03_press_sequential.spec.ts` — demonstrates `pressSequentially` for character-by-character input on the AwesomeQA practice page.
 
 > Note: Several module folders are scaffolded as placeholders for upcoming exercises.
+
+- `tests/06_Multiple_Element_/` — locating and iterating over multiple elements:
+  - `01_multi_element.spec.ts` — collect `a.list-group-item` links via `locator.all()` and `allInnerTexts()`, click "Forgotten Password" by iterating.
+  - `02_multi_element.spec.ts` — click a link directly via `getByTestId`.
+- `tests/07_WebTables/` — web table exercises across AwesomeQA and The Testing Academy demos:
+  - `01_webtables.spec.ts` — read a static table's rows/cols via dynamic XPath and assert a cell value.
+  - `02_dynamic_rows.spec.ts` — extract every row's cell data from a dynamic table.
+  - `03_student_login.spec.ts` — scaffold for a student form flow (URL-change assertion).
+  - `04_filter_webtables.spec.ts` — use `locator.filter({ hasText })` to find links and assert counts/attributes.
+  - `05_webtables_practice.spec.ts` — find a row by text and read specific `data-col` cells.
+  - `06_webtable_pagination.spec.ts` — paginated web table handling.
+  - `07_webtable_pagination_forloop.spec.ts` — pagination traversal with a `for` loop.
 
 ## Configuration Highlights
 
